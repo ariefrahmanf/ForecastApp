@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.home.HomeFragment"
+    tools:ignore="ScrollViewCount"
+    android:scrollbars="none"
+    android:overScrollMode="never"
+    android:nestedScrollingEnabled="false"
+    android:focusableInTouchMode="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a city"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp"/>
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="#616161"
+            android:text="Select a city or country to see a weather"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp"/>
+
+<!--        <androidx.appcompat.widget.SearchView-->
+<!--            android:id="@+id/etSearch"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvSubTitle"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:background="@drawable/bg_btn"-->
+<!--            android:textSize="12sp"-->
+<!--            app:queryHint="Search here..."-->
+<!--            app:iconifiedByDefault="false"-->
+<!--            android:inputType="none"-->
+<!--            android:focusable="false"-->
+<!--            app:queryBackground="@android:color/transparent"/>-->
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
+            android:layout_marginTop="32dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/bg_btn"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp"
+            android:textSize="14sp"
+            android:drawableEnd="@drawable/ic_search_24"
+            android:hint="Search here..."
+            android:pointerIcon="none"
+            android:inputType="none"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/tvTitleFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch"
+            android:text="Bookmarked City"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleFavourite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"
+            android:transitionGroup="true"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

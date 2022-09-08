@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#60D9EFFF"
+    tools:context=".presentation.detailcityweather.DetailCityWeatherFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvWeather"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                tools:text="Rain"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                style="?attr/materialIconButtonStyle"
+                android:id="@+id/btnBookmark"
+                app:icon="@drawable/sl_bookmark"
+                android:checkable="true"
+                app:toggleCheckedStateOnClick="true"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDegree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="29°C"
+                android:textAlignment="textEnd"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/tvWeather"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/btnBookmark"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Mon, 24 August 2022"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWeather"/>
+
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Jakarta"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"/>
+
+            <ImageView
+                android:id="@+id/ivWeather"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCity"
+                android:src="@drawable/ic_scattered_cloud"/>
+
+            <include
+                android:id="@+id/cvHumidity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cvTemperature"
+                app:layout_constraintTop_toBottomOf="@id/ivWeather"
+                android:layout_marginEnd="4dp"
+                layout="@layout/card_weather_item"
+                android:layout_marginTop="32dp"/>
+
+            <include
+                android:id="@+id/cvTemperature"
+                android:layout_width="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cvHumidity"
+                app:layout_constraintTop_toTopOf="@id/cvHumidity"
+                app:layout_constraintEnd_toEndOf="parent"
+                layout="@layout/card_weather_item"/>
+
+            <include
+                android:id="@+id/cvPressure"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cvWind"
+                app:layout_constraintTop_toBottomOf="@id/cvHumidity"
+                android:layout_marginEnd="4dp"
+                layout="@layout/card_weather_item"
+                android:layout_marginTop="16dp"/>
+
+            <include
+                android:id="@+id/cvWind"
+                android:layout_width="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/cvPressure"
+                app:layout_constraintTop_toBottomOf="@id/cvTemperature"
+                app:layout_constraintEnd_toEndOf="parent"
+                layout="@layout/card_weather_item"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <FrameLayout
+        android:id="@+id/bottomSheetForecast"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        tools:visibility="gone"
+        android:background="@drawable/bg_bottom_sheet"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="@color/navy_700"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today"
+                    android:layout_marginTop="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"
+                    android:textColor="?attr/colorPrimaryVariant"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvForecastWeatherToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:scrollbars="none"
+                    android:layout_marginHorizontal="8dp"
+                    android:overScrollMode="never"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next 5 Days"
+                    android:layout_marginTop="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"
+                    android:textColor="?attr/colorPrimaryVariant"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvForecastWeatherNextDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

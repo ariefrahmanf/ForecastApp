@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mobile.weatherapp.presentation.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mobile.weatherapp.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailCityWeatherFragment"
+            app:destination="@id/detailCityWeatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.mobile.weatherapp.presentation.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailCityWeatherFragment"
+            app:destination="@id/detailCityWeatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCityWeatherFragment"
+        android:name="com.mobile.weatherapp.presentation.detailcityweather.DetailCityWeatherFragment"
+        android:label="fragment_detail_city_weather"
+        tools:layout="@layout/fragment_detail_city_weather" >
+        <argument
+            android:name="currentWeather"
+            app:argType="com.mobile.weatherapp.domain.model.CurrentWeather" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeSliderFragment"
+        android:name="com.mobile.weatherapp.presentation.welcomeslider.WelcomeSliderFragment"
+        android:label="fragment_welcome_slider"
+        tools:layout="@layout/fragment_welcome_slider" >
+        <action
+            android:id="@+id/action_welcomeSliderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
